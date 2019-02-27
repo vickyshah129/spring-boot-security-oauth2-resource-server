@@ -19,15 +19,20 @@ public class ResourceServerApplication {
         SpringApplication.run(ResourceServerApplication.class, args);
     }
 
-    @PreAuthorize("hasRole('ROLE_USER1')")
-    @RequestMapping(value = "/unauthorized", method = RequestMethod.GET)
-    public String test2() {
-        return "Hello World";
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String success() {
+        return "only ROLE_ADMIN can access this";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    @RequestMapping(value = "/success", method = RequestMethod.GET)
-    public String success() {
-        return "Hello World";
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userRoleCheck() {
+        return "ROLE_USER can access this";
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+        return "This call has no permission";
     }
 }

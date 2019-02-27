@@ -1,6 +1,6 @@
 security:
   oauth2:
     resource:
-      userInfoUri: https://apis.innowi.com:81/v1/demo/merchant/verify_token
+      userInfoUri: http://localhost:8080/server_auth/verify_token
 server:
   port: 9191
